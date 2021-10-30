@@ -62,17 +62,15 @@ public class Init {
     private static void menu2() {
         if (get1o2()){
             int index=Especialista.mostrarEspecialistasFonasa();
-            if(index== 0){
-                Especialista.consultarHoras(Especialista.especialistas.get(index));
-            }else if(index >= 1){
-                Especialista.consultarHoras(Especialista.especialistas.get(index-1));
-            }
+                Especialista.consultarHoras(Especialista.atiendefonasa.get(index-1));
         }else{
             int index=Especialista.mostrarEspecialistasIsapre();
-            if(index== 0){
-                Especialista.consultarHoras(Especialista.especialistas.get(index));
-            }else if(index >= 1){
-                Especialista.consultarHoras(Especialista.especialistas.get(index-1));
+            if (index-1>=0){
+                Especialista.consultarHoras(Especialista.atiendeisapre.get(index-1));
+            }
+            else if (index<=0){
+                Especialista.consultarHoras(Especialista.especialistas.get(0));
+
             }
         }
     }
@@ -118,6 +116,7 @@ public class Init {
             try{
                 csvReadP();
                 csvReadE();
+                csvReadA();
             }catch(FileNotFoundException e){
                 e.printStackTrace();
             }
@@ -176,15 +175,15 @@ public class Init {
     }
     public static void csvReadA() throws FileNotFoundException {
         CSVParser parser = new CSVParserBuilder().withSeparator(',').build();
-        var builder = new CSVReaderBuilder(new FileReader(rutaP));
+        var builder = new CSVReaderBuilder(new FileReader(rutaA));
         try (CSVReader reader = builder.withCSVParser(parser).withSkipLines(1).build()) {
             String[] nextLine;
             while ((nextLine = reader.readNext()) != null) {
-                String nombre = nextLine[0];
-                String apellido = nextLine[1];
-                String rut =nextLine[2];
-                String fecha2 =nextLine[3];
-                Especialista.horasAgendadas.add(new Agenda(nombre,apellido,rut,fecha2));
+                String fecha = nextLine[0];
+                String nombre = nextLine[1];
+                String especialista =nextLine[2];
+                String hora =nextLine[3];
+                Especialista.horasAgendadas.add(new Agenda(fecha,nombre,especialista,hora));
             }
         } catch (Exception e) {
             System.out.println("Error" + e);

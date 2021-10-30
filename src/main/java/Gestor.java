@@ -58,9 +58,9 @@ public interface Gestor {
     }
     static void guardarHoras(){
         eliminarArchivo(Init.rutaA);
-        crearArchivo(Init.rutaE,"Fecha,Nombre,Especialista,Hora");
-        for (Especialista e: Especialista.especialistas){
-            nuevaLinea(Init.rutaE,e.toString());
+        crearArchivo(Init.rutaA,"Fecha,Nombre,Especialista,Hora");
+        for (Agenda a: Especialista.horasAgendadas){
+            nuevaLinea(Init.rutaA,a.toString());
         }
     }
 }

@@ -14,6 +14,10 @@ public class Agenda {
 //    LocalTime time1 = LocalTime.of(11, 00, 00);
 
 
+    public Especialista getEspecialista() {
+        return especialista;
+    }
+
     public LocalDate getDate() {
         return date;
     }
@@ -30,17 +34,18 @@ public class Agenda {
     }
 
     public Agenda(String date, String paciente, String especialista, String hora){
-        this.date = LocalDate.parse(date);
+        this.date = LocalDate.parse(date,formato);
         this.paciente = comapararPaciente(paciente);
         this.especialista = compararEspecialista(especialista);
         this.hour = LocalTime.parse(hora);
     }
 
-    private Especialista compararEspecialista(String especialista) {
-        for (Especialista p:
+    static Especialista compararEspecialista(String especialista) {
+        for (Especialista e:
                 Especialista.especialistas) {
-            if (p.getNombre().equals(especialista)){
-                return p;
+            String nombrecompleto=(e.getNombre());
+            if (nombrecompleto.equals(especialista)){
+                return e;
             }
         }
         return null;
@@ -49,7 +54,8 @@ public class Agenda {
     private Paciente comapararPaciente(String paciente) {
         for (Paciente p:
              Paciente.pacientes) {
-            if (p.getNombre().equals(paciente)){
+            String nombrecompleto=(p.getNombre()+" "+p.getApellido());
+            if (nombrecompleto.equals(paciente)){
                 return p;
             }
         }
