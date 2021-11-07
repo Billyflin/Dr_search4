@@ -20,7 +20,7 @@ class EspecialistaTest {
 
         switch(LocalDate.now().getDayOfWeek()){
             case FRIDAY:
-                System.out.println("CHAVAAALEEEE QUE E VIERNEEES!!!!");
+                System.out.println("ESCHAVAAALEEEE QUE E VIERNEE!!!!");
             case MONDAY:
         }
     }

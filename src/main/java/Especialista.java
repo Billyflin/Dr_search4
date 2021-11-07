@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Especialista {
     public static ArrayList<Especialista> especialistas=new ArrayList<>();
-    public static ArrayList<Agenda> horasAgendadas=new ArrayList<>();
-    public static ArrayList<LocalTime> horasAtencion =new ArrayList<>();
+    public static ArrayList<Agenda> horasAgendadas=new ArrayList<>();//horas tomadas del profecional
+    public static ArrayList<LocalTime> horasAtencion =new ArrayList<>();//horarios de atencion
     public static ArrayList<Especialista> atiendeisapre =new ArrayList<>();
     public static ArrayList<Especialista> atiendefonasa =new ArrayList<>();
     public static DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -19,7 +19,7 @@ public class Especialista {
     private final boolean fonasa;
     private final boolean isapre;
 
-    public Especialista(int id, String nombre, String especialidad, boolean fonasa, boolean isapre) {
+    public Especialista(int id, String nombre, String especialidad, boolean fonasa, boolean isapre) {//Solo se lee desde archivo
         this.id = id;
         this.nombre = WordUtils.capitalize(nombre);
         this.especialidad = especialidad;
@@ -27,7 +27,7 @@ public class Especialista {
         this.isapre = isapre;
     }
 
-    public static int mostrarEspecialistasFonasa() {
+    public static int mostrarEspecialistasFonasa() { //muestra y cuenta especilistas con fonasa
         int counter = 0;
         System.out.println("Profesionales por indice");
         for (Especialista e:especialistas
@@ -87,7 +87,7 @@ public class Especialista {
         return null;
     }
 
-    public static void consultarHoras(Especialista especialista) {
+    public static void consultarHoras(Especialista especialista) { // revisa disponibilidad de las horas
         LocalDate fecha;
         LocalTime hora;
         do {

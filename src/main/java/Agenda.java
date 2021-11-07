@@ -6,25 +6,12 @@ public class Agenda {
 
     public DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final LocalDate date;
-    private String pacienteBusqueda;
-    private String especialistaBusqueda;
     private final Paciente paciente;
     private final Especialista especialista;
     private final LocalTime hour;
 //    LocalTime time1 = LocalTime.of(11, 00, 00);
 
 
-    public Especialista getEspecialista() {
-        return especialista;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public LocalTime getHour() {
-        return hour;
-    }
 
     public Agenda(LocalDate date, Paciente paciente, Especialista especialista, LocalTime hour) {
         this.date = date;
@@ -71,6 +58,17 @@ public class Agenda {
         System.out.println("Fecha: "+date.format(formato));
         System.out.println("Hora: "+ hour);
         System.out.println("------------------");
+    }
+    public Especialista getEspecialista() {
+        return especialista;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public LocalTime getHour() {
+        return hour;
     }
 
 
